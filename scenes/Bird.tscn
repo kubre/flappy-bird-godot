@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/Bird.gd" type="Script" id=1]
+[ext_resource path="res://sprites/bird_orange_0.png" type="Texture" id=2]
+[ext_resource path="res://sprites/bird_orange_1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/bird_orange_2.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 9.25972
+height = 0.133574
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "flap",
+"speed": 5.0
+} ]
+
+[node name="Bird" type="RigidBody2D"]
+position = Vector2( 66.5916, 27.5379 )
+gravity_scale = 5.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "flap"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
